@@ -22,7 +22,8 @@
       "mcp__playwright__browser_tab_select",
       "Bash(gh pr merge:*)",
       "Bash(go fmt:*)",
-      "Bash(git remote set-url:*)"
+      "Bash(git remote set-url:*)",
+      "Bash(go run:*)"
     ],
     "deny": []
   }
