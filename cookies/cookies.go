@@ -48,6 +48,11 @@ func (c *localCookie) SaveCookies(data []byte) error {
 
 // GetCookiesFilePath 获取 cookies 文件路径。
 func GetCookiesFilePath() string {
+	// 支持环境变量配置 cookies 路径
+	if customPath := os.Getenv("XIAOHONGSHU_COOKIES_PATH"); customPath != "" {
+		return customPath
+	}
+
 	tmpDir := os.TempDir()
 	filePath := filepath.Join(tmpDir, "cookies.json")
 	return filePath
