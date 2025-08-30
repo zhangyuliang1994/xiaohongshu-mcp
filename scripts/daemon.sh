@@ -37,8 +37,19 @@ check_root() {
     fi
 }
 
+# 检查Go命令是否可用
+check_go() {
+    if ! command -v go &> /dev/null; then
+        error "Go命令未找到"
+        error "请安装Go语言环境: https://golang.org/doc/install"
+        error "或确保Go已添加到PATH环境变量中"
+        exit 1
+    fi
+}
+
 # 构建二进制文件
 build_binary() {
+    check_go
     log "构建二进制文件..."
     cd "$WORK_DIR"
     go build -o "$BINARY_NAME" .
